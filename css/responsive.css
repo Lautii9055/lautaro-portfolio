@@ -1,0 +1,75 @@
+/* ==========================================================================
+   RESPONSIVE
+   ========================================================================== */
+
+/* ---------- 1024px : reduce grids, hide desktop-only nav ---------- */
+@media (max-width: 1024px){
+  .navbar__links{ display: none; }
+  .navbar__cta{ display: none; }
+  .navbar__burger{ display: flex; }
+
+  .cursor{ display: none !important; }
+
+  .about__grid{ grid-template-columns: 1fr; }
+  .about__panel{ order: -1; }
+
+  .services__grid{ grid-template-columns: repeat(2, 1fr); }
+
+  .process__steps{ grid-template-columns: repeat(3, 1fr); row-gap: 36px; }
+
+  .projects__grid{ grid-template-columns: repeat(2, 1fr); }
+
+  .featured__body{ grid-template-columns: 1fr; }
+  .featured__visual{ order: 2; }
+
+  .stack__grid{ grid-template-columns: repeat(2, 1fr); }
+  .why__grid{ grid-template-columns: repeat(2, 1fr); }
+
+  .contact__grid{ grid-template-columns: 1fr; }
+}
+
+/* ---------- 768px : tablet / mobile ---------- */
+@media (max-width: 768px){
+  :root{ --nav-h: 68px; }
+
+  main > section{ padding: 64px var(--gutter); }
+
+  .hero{ min-height: 100svh; padding-top: calc(var(--nav-h) + 16px); }
+  .hero__name{ font-size: clamp(44px, 14vw, 72px); }
+  .hero__headline{ max-width: none; }
+  .hero__actions{ flex-direction: column; align-items: stretch; }
+  .hero__actions .btn{ text-align: center; }
+  .hero__scroll{ display: none; }
+
+  .services__grid{ grid-template-columns: 1fr; border-radius: 16px; }
+
+  .process__steps{ grid-template-columns: 1fr; gap: 28px; }
+  .process__line{ display: none; }
+
+  .projects__grid{ grid-template-columns: 1fr; }
+
+  .stack__grid{ grid-template-columns: 1fr; }
+  .why__grid{ grid-template-columns: 1fr; }
+
+  .form-row{ grid-template-columns: 1fr; }
+
+  .footer__top{ flex-direction: column; align-items: flex-start; }
+  .footer__bottom{ flex-direction: column; }
+
+  .trust__badges{ gap: 8px; }
+  .trust__badges span{ font-size: 12px; padding: 8px 14px; }
+}
+
+/* ---------- 480px : small phones ---------- */
+@media (max-width: 480px){
+  .hero__eyebrow{ font-size: 11px; }
+  .hero__headline{ font-size: clamp(19px, 6vw, 24px); }
+  .btn{ padding: 14px 22px; font-size: 12px; }
+
+  .mobile-menu__links a{ font-size: 34px; }
+
+  .project-modal__panel{ padding: 24px 20px; }
+}
+
+/* ---------- ensure no horizontal scroll anywhere ---------- */
+html, body{ max-width: 100%; overflow-x: hidden; }

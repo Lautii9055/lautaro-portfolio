@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lautaro Zanino | Desarrollador Web Freelance</title>
+<meta name="description" content="Lautaro Zanino — desarrollador web freelance en Buenos Aires. Sitios web, aplicaciones y sistemas con base de datos, construidos con foco en rendimiento, usabilidad y resultados.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://lautarozanino.dev/">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Lautaro Zanino | Desarrollador Web Freelance">
+<meta property="og:description" content="Sitios web, aplicaciones y sistemas digitales construidos con foco en rendimiento, usabilidad y resultados.">
+<meta property="og:image" content="/assets/images/og-cover.jpg">
+<meta property="og:locale" content="es_AR">
+<meta property="og:url" content="https://lautarozanino.dev/">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Lautaro Zanino | Desarrollador Web Freelance">
+<meta name="twitter:description" content="Sitios web, aplicaciones y sistemas digitales construidos con foco en rendimiento, usabilidad y resultados.">
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%230A0B0F'/%3E%3Ctext x='50' y='64' font-family='monospace' font-size='44' font-weight='700' fill='%236E5BFF' text-anchor='middle'%3ELZ%3C/text%3E%3C/svg%3E">
+
+<!-- JSON-LD structured data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Lautaro Zanino",
+  "jobTitle": "Desarrollador Web Freelance",
+  "url": "https://lautarozanino.dev/",
+  "sameAs": [
+    "https://github.com/TU-GITHUB",
+    "https://www.linkedin.com/in/TU-LINKEDIN"
+  ],
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Buenos Aires",
+    "addressCountry": "AR"
+  },
+  "knowsAbout": ["HTML5", "CSS3", "JavaScript", "Java", "Python", "Node.js", "SQL", "MySQL", "SQL Server", "Git"]
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/animations.css">
+<link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+<!-- ============ PRELOADER ============ -->
+<div class="preloader" id="preloader" aria-hidden="true">
+  <div class="preloader__mark">LZ</div>
+  <div class="preloader__name">LAUTARO ZANINO</div>
+  <div class="preloader__status">
+    <span class="preloader__bar"><span class="preloader__bar-fill" id="preloaderFill"></span></span>
+    <span class="preloader__label">CONSTRUYENDO EXPERIENCIAS DIGITALES</span>
+  </div>
+</div>
+
+<!-- ============ CURSOR (desktop only) ============ -->
+<div class="cursor" id="cursor" aria-hidden="true">
+  <div class="cursor__dot"></div>
+  <div class="cursor__ring"></div>
+  <span class="cursor__label" id="cursorLabel"></span>
+</div>
+
+<a class="skip-link" href="#main">Saltar al contenido</a>
+
+<!-- ============ NAVBAR ============ -->
+<header class="navbar" id="navbar">
+  <div class="navbar__inner">
+    <a href="#top" class="navbar__logo" aria-label="Lautaro Zanino — inicio">
+      <span class="navbar__logo-mark">LZ</span>
+      <span class="navbar__logo-name">Lautaro Zanino</span>
+    </a>
+
+    <nav class="navbar__links" aria-label="Navegación principal">
+      <a href="#about" data-nav>Sobre mí</a>
+      <a href="#services" data-nav>Servicios</a>
+      <a href="#projects" data-nav>Proyectos</a>
+      <a href="#stack" data-nav>Stack</a>
+      <a href="#contact" data-nav>Contacto</a>
+    </nav>
+
+    <a href="#contact" class="navbar__cta magnetic">Hablemos</a>
+
+    <button class="navbar__burger" id="burgerBtn" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobileMenu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- ============ MOBILE MENU ============ -->
+<div class="mobile-menu" id="mobileMenu">
+  <nav class="mobile-menu__links" aria-label="Navegación móvil">
+    <a href="#about" data-nav data-mobile-link><span>01</span>Sobre mí</a>
+    <a href="#services" data-nav data-mobile-link><span>02</span>Servicios</a>
+    <a href="#projects" data-nav data-mobile-link><span>03</span>Proyectos</a>
+    <a href="#stack" data-nav data-mobile-link><span>04</span>Stack</a>
+    <a href="#contact" data-nav data-mobile-link><span>05</span>Contacto</a>
+  </nav>
+  <a href="#contact" class="mobile-menu__cta" data-mobile-link>Hablemos de tu proyecto</a>
+  <div class="mobile-menu__meta">
+    <span>Buenos Aires, Argentina</span>
+    <span>[TU EMAIL]</span>
+  </div>
+</div>
+
+<main id="main">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="top">
+    <canvas class="hero__canvas" id="heroCanvas" aria-hidden="true"></canvas>
+    <div class="hero__grid-overlay" aria-hidden="true"></div>
+
+    <div class="hero__content">
+      <p class="hero__eyebrow reveal-line"><span>[ DESARROLLADOR WEB FREELANCE — BUENOS AIRES ]</span></p>
+
+      <h1 class="hero__name reveal-line">
+        <span class="reveal-mask"><span class="reveal-inner">LAUTARO</span></span>
+        <span class="reveal-mask"><span class="reveal-inner">ZANINO</span></span>
+      </h1>
+
+      <p class="hero__headline reveal-line">
+        <span class="reveal-mask"><span class="reveal-inner">Desarrollo software web en el que tu negocio puede confiar.</span></span>
+      </p>
+
+      <p class="hero__subtext reveal-line">
+        Sitios web, aplicaciones y soluciones digitales modernas, construidas con foco en rendimiento, usabilidad y resultados.
+      </p>
+
+      <div class="hero__actions reveal-line">
+        <a href="#contact" class="btn btn--primary magnetic">Hablemos de tu proyecto</a>
+        <a href="#projects" class="btn btn--ghost magnetic">Ver mis proyectos</a>
+      </div>
+    </div>
+
+    <div class="hero__scroll" aria-hidden="true">
+      <span>Scroll para explorar</span>
+      <div class="hero__scroll-line"><span></span></div>
+    </div>
+  </section>
+
+  <!-- ============ TECH STRIP ============ -->
+  <section class="tech-strip" aria-label="Tecnologías que utilizo">
+    <p class="tech-strip__label">[ HERRAMIENTAS QUE USO PARA CONSTRUIR ]</p>
+    <div class="tech-strip__track">
+      <div class="tech-strip__group" id="techGroupA"></div>
+      <div class="tech-strip__group" id="techGroupB" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <!-- ============ ABOUT ============ -->
+  <section class="about" id="about">
+    <div class="section-head">
+      <p class="eyebrow">[ 01 · ABOUT ]</p>
+      <h2 class="section-title">Sobre mí</h2>
+    </div>
+
+    <div class="about__grid">
+      <div class="about__text">
+        <p class="about__lead">
+          Soy <strong>Lautaro Zanino</strong>, desarrollador web freelance orientado a crear soluciones digitales funcionales, modernas y escalables.
+        </p>
+        <p>
+          Trabajo en el frontend y en el backend por igual: diseño interfaces claras y las conecto con sistemas y bases de datos que sostienen el producto detrás de escena. Mi objetivo no es solo que un sitio se vea bien, sino que funcione, cargue rápido y resuelva un problema real de negocio.
+        </p>
+        <p>
+          Me involucro en cada proyecto desde el primer día: entiendo el objetivo, propongo la arquitectura correcta y acompaño el desarrollo hasta la entrega.
+        </p>
+
+        <ul class="about__tags" aria-label="Áreas de trabajo">
+          <li>Web Development</li>
+          <li>Databases</li>
+          <li>Backend</li>
+          <li>Problem Solving</li>
+        </ul>
+      </div>
+
+      <div class="about__panel" aria-hidden="true">
+        <div class="about__panel-row"><span>role</span><span>Full Stack Developer</span></div>
+        <div class="about__panel-row"><span>based_in</span><span>Buenos Aires, AR</span></div>
+        <div class="about__panel-row"><span>focus</span><span>Web · Apps · Data</span></div>
+        <div class="about__panel-row"><span>status</span><span class="status-dot">Disponible para proyectos</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SERVICES ============ -->
+  <section class="services" id="services">
+    <div class="section-head">
+      <p class="eyebrow">[ 02 · SERVICIOS ]</p>
+      <h2 class="section-title">Qué puedo construir</h2>
+      <p class="section-sub">No vendo tecnologías sueltas. Construyo soluciones pensadas para un objetivo concreto.</p>
+    </div>
+
+    <div class="services__grid">
+      <article class="service-card">
+        <span class="service-card__index">01</span>
+        <h3>Web Development</h3>
+        <p>Sitios web modernos, responsive y optimizados para velocidad y buscadores.</p>
+        <div class="service-card__stack">HTML5 · CSS3 · JavaScript</div>
+      </article>
+
+      <article class="service-card">
+        <span class="service-card__index">02</span>
+        <h3>Landing Pages</h3>
+        <p>Páginas enfocadas en conversión: presentar tu propuesta y convertir visitas en clientes.</p>
+        <div class="service-card__stack">UX/UI · Copywriting · CRO</div>
+      </article>
+
+      <article class="service-card">
+        <span class="service-card__index">03</span>
+        <h3>Web Applications</h3>
+        <p>Aplicaciones con frontend, backend y base de datos trabajando como un solo sistema.</p>
+        <div class="service-card__stack">Node.js · Java · Python</div>
+      </article>
+
+      <article class="service-card">
+        <span class="service-card__index">04</span>
+        <h3>Database Systems</h3>
+        <p>Modelado de datos, consultas, relaciones y procedimientos para gestionar información crítica.</p>
+        <div class="service-card__stack">MySQL · SQL Server · PostgreSQL</div>
+      </article>
+
+      <article class="service-card">
+        <span class="service-card__index">05</span>
+        <h3>Custom Solutions</h3>
+        <p>Cuando lo que necesitás no entra en una categoría estándar, diseño una solución a medida.</p>
+        <div class="service-card__stack">Arquitectura a medida</div>
+      </article>
+
+      <article class="service-card">
+        <span class="service-card__index">06</span>
+        <h3>Maintenance &amp; Improvements</h3>
+        <p>Mejora, mantenimiento y optimización de un proyecto que ya existe.</p>
+        <div class="service-card__stack">Performance · Refactor · Soporte</div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============ PROCESS ============ -->
+  <section class="process" id="process">
+    <div class="section-head">
+      <p class="eyebrow">[ 03 · PROCESO ]</p>
+      <h2 class="section-title">Cómo trabajo</h2>
+    </div>
+
+    <div class="process__line" aria-hidden="true">
+      <span class="process__line-fill" id="processFill"></span>
+    </div>
+
+    <div class="process__steps">
+      <div class="process__step">
+        <span class="process__step-index">01</span>
+        <h3>Discover</h3>
+        <p>Entiendo el problema, los objetivos y las necesidades reales del proyecto.</p>
+      </div>
+      <div class="process__step">
+        <span class="process__step-index">02</span>
+        <h3>Plan</h3>
+        <p>Defino estructura, funcionalidades y qué tecnología tiene sentido usar.</p>
+      </div>
+      <div class="process__step">
+        <span class="process__step-index">03</span>
+        <h3>Build</h3>
+        <p>Desarrollo la solución con código ordenado y revisiones constantes.</p>
+      </div>
+      <div class="process__step">
+        <span class="process__step-index">04</span>
+        <h3>Test</h3>
+        <p>Verifico funcionamiento, responsive, rendimiento y experiencia de uso.</p>
+      </div>
+      <div class="process__step">
+        <span class="process__step-index">05</span>
+        <h3>Launch</h3>
+        <p>Entrego el proyecto listo para usarse, con la documentación necesaria.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PROJECTS ============ -->
+  <section class="projects" id="projects">
+    <div class="section-head">
+      <p class="eyebrow">[ 04 · PORTFOLIO ]</p>
+      <h2 class="section-title">Selected Work</h2>
+      <p class="section-sub">Una selección de proyectos que diseñé y desarrollé.</p>
+    </div>
+
+    <div class="projects__filters" id="projectFilters" role="tablist" aria-label="Filtrar proyectos por categoría">
+      <button class="filter-btn is-active" data-filter="all" role="tab" aria-selected="true">Todos</button>
+      <button class="filter-btn" data-filter="website" role="tab" aria-selected="false">Websites</button>
+      <button class="filter-btn" data-filter="webapp" role="tab" aria-selected="false">Web Apps</button>
+      <button class="filter-btn" data-filter="backend" role="tab" aria-selected="false">Backend</button>
+      <button class="filter-btn" data-filter="database" role="tab" aria-selected="false">Databases</button>
+      <button class="filter-btn" data-filter="fullstack" role="tab" aria-selected="false">Full Stack</button>
+    </div>
+
+    <div class="projects__grid" id="projectsGrid"><!-- generado por js/projects.js --></div>
+  </section>
+
+  <!-- ============ FEATURED PROJECT ============ -->
+  <section class="featured" id="featured">
+    <div class="section-head">
+      <p class="eyebrow">[ 05 · CASE STUDY ]</p>
+      <h2 class="section-title">Featured Project</h2>
+    </div>
+
+    <div class="featured__body">
+      <div class="featured__visual" aria-hidden="true">
+        <div class="featured__mockup">
+          <div class="featured__mockup-bar"><span></span><span></span><span></span></div>
+          <div class="featured__mockup-screen">
+            <div class="featured__mockup-row w-60"></div>
+            <div class="featured__mockup-row w-90"></div>
+            <div class="featured__mockup-row w-40"></div>
+            <div class="featured__mockup-grid">
+              <div></div><div></div><div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="featured__content">
+        <h3 class="featured__title">Bank Management System</h3>
+        <p class="featured__desc">Aplicación web para la gestión de clientes, préstamos, pagos y transacciones financieras de una entidad bancaria.</p>
+
+        <div class="featured__block">
+          <span class="featured__block-label">The Problem</span>
+          <p>La gestión de clientes y préstamos se realizaba de forma manual, con información dispersa y sin trazabilidad de las transacciones.</p>
+        </div>
+        <div class="featured__block">
+          <span class="featured__block-label">The Solution</span>
+          <p>Un sistema web centralizado para registrar clientes, administrar préstamos y pagos, y consultar el historial de transacciones desde un mismo lugar.</p>
+        </div>
+        <div class="featured__block">
+          <span class="featured__block-label">The Technology</span>
+          <p>Java · MySQL · JDBC · JSP · Servlets</p>
+        </div>
+        <div class="featured__block">
+          <span class="featured__block-label">The Result</span>
+          <p>Un flujo de trabajo más ordenado, con la información centralizada y accesible para el equipo administrativo.</p>
+        </div>
+
+        <div class="featured__actions">
+          <a href="#" class="btn btn--primary magnetic" data-placeholder-link>Ver proyecto</a>
+          <a href="#" class="btn btn--ghost magnetic" data-placeholder-link>GitHub</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ STACK ============ -->
+  <section class="stack" id="stack">
+    <div class="section-head">
+      <p class="eyebrow">[ 06 · STACK ]</p>
+      <h2 class="section-title">My Stack</h2>
+    </div>
+
+    <div class="stack__grid">
+      <div class="stack__category">
+        <h3>Frontend</h3>
+        <ul>
+          <li>HTML5</li>
+          <li>CSS3</li>
+          <li>JavaScript</li>
+        </ul>
+      </div>
+      <div class="stack__category">
+        <h3>Backend</h3>
+        <ul>
+          <li>Java</li>
+          <li>Python</li>
+          <li>Node.js</li>
+        </ul>
+      </div>
+      <div class="stack__category">
+        <h3>Databases</h3>
+        <ul>
+          <li>MySQL</li>
+          <li>SQL Server</li>
+          <li>PostgreSQL</li>
+        </ul>
+      </div>
+      <div class="stack__category">
+        <h3>Tools</h3>
+        <ul>
+          <li>Git</li>
+          <li>GitHub</li>
+          <li>VS Code</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ WHY WORK WITH ME ============ -->
+  <section class="why" id="why">
+    <div class="section-head">
+      <p class="eyebrow">[ 07 · POR QUÉ ]</p>
+      <h2 class="section-title">Why work with me?</h2>
+    </div>
+
+    <div class="why__grid">
+      <div class="why__item">
+        <h3>User Focused</h3>
+        <p>No escribo solo código. Pienso en cómo va a usar el producto la persona del otro lado.</p>
+      </div>
+      <div class="why__item">
+        <h3>Performance</h3>
+        <p>Priorizo sitios rápidos y eficientes, porque la velocidad también es experiencia.</p>
+      </div>
+      <div class="why__item">
+        <h3>Scalable</h3>
+        <p>Construyo pensando en que tu proyecto pueda crecer sin tener que rehacerse.</p>
+      </div>
+      <div class="why__item">
+        <h3>Communication</h3>
+        <p>Mantengo una comunicación clara y constante durante todo el proyecto.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ BUILT WITH CARE (trust) ============ -->
+  <section class="trust">
+    <p class="trust__label">[ BUILT WITH CARE ]</p>
+    <div class="trust__badges">
+      <span>Clean Code</span>
+      <span>Responsive</span>
+      <span>SEO Ready</span>
+      <span>Performance</span>
+      <span>Accessible</span>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <section class="contact" id="contact">
+    <div class="contact__grid">
+      <div class="contact__intro">
+        <p class="eyebrow">[ 08 · CONTACTO ]</p>
+        <h2 class="section-title">Have a project in mind?</h2>
+        <p class="section-sub">Contame qué estás construyendo y convirtamos la idea en un producto real.</p>
+
+        <ul class="contact__info">
+          <li>
+            <span>Email</span>
+            <a href="mailto:zaninolautaro@gmail.com" data-placeholder-link>zaninolautaro@gmail.com</a>
+          </li>
+          <li>
+            <span>GitHub</span>
+            <a href="https://github.com/Lautii9055" data-placeholder-link>https://github.com/Lautii9055</a>
+          </li>
+          <li>
+            <span>LinkedIn</span>
+            <a href="https://www.linkedin.com/in/lautarozanino/" data-placeholder-link>https://www.linkedin.com/in/lautarozanino/</a>
+          </li>
+          <li>
+            <span>Location</span>
+            <a href="https://www.google.com/maps/place/Buenos+Aires,+Argentina" target="_blank" tabindex="-1">Buenos Aires, Argentina</a>
+          </li>
+        </ul>
+      </div>
+
+      <form class="contact__form" id="contactForm" novalidate>
+        <div class="form-row">
+          <div class="form-field">
+            <label for="fName">Nombre *</label>
+            <input type="text" id="fName" name="name" required autocomplete="name">
+            <span class="form-error" data-error-for="fName"></span>
+          </div>
+          <div class="form-field">
+            <label for="fEmail">Email *</label>
+            <input type="email" id="fEmail" name="email" required autocomplete="email">
+            <span class="form-error" data-error-for="fEmail"></span>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-field">
+            <label for="fCompany">Empresa <em>(opcional)</em></label>
+            <input type="text" id="fCompany" name="company" autocomplete="organization">
+          </div>
+          <div class="form-field">
+            <label for="fType">Tipo de proyecto *</label>
+            <select id="fType" name="projectType" required>
+              <option value="" selected disabled>Elegir una opción</option>
+              <option value="website">Website</option>
+              <option value="landing">Landing Page</option>
+              <option value="webapp">Web Application</option>
+              <option value="database">Database System</option>
+              <option value="custom">Custom Solution</option>
+              <option value="other">Otro</option>
+            </select>
+            <span class="form-error" data-error-for="fType"></span>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label for="fBudget">Presupuesto estimado <em>(opcional)</em></label>
+          <select id="fBudget" name="budget">
+            <option value="" selected>Prefiero conversarlo</option>
+            <option value="s">Menos de USD 500</option>
+            <option value="m">USD 500 – 1.500</option>
+            <option value="l">USD 1.500 – 5.000</option>
+            <option value="xl">Más de USD 5.000</option>
+          </select>
+        </div>
+
+        <div class="form-field">
+          <label for="fMessage">Mensaje *</label>
+          <textarea id="fMessage" name="message" rows="4" required></textarea>
+          <span class="form-error" data-error-for="fMessage"></span>
+        </div>
+
+        <button type="submit" class="btn btn--primary btn--block magnetic">Start a project</button>
+        <p class="contact__form-note" id="formNote" role="status" aria-live="polite"></p>
+        <!-- TODO: conectar a Formspree, EmailJS o backend propio antes de producción -->
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="footer__top">
+    <div class="footer__brand">
+      <span class="footer__mark">LZ</span>
+      <p>Lautaro Zanino — Desarrollador Web Freelance.</p>
+    </div>
+    <nav class="footer__links" aria-label="Navegación de pie de página">
+      <a href="#about">Sobre mí</a>
+      <a href="#services">Servicios</a>
+      <a href="#projects">Proyectos</a>
+      <a href="#stack">Stack</a>
+      <a href="#contact">Contacto</a>
+    </nav>
+    <div class="footer__social">
+      <a href="https://github.com/Lautii9055" data-placeholder-link>GitHub</a>
+      <a href="https://www.linkedin.com/in/lautarozanino/" data-placeholder-link>LinkedIn</a>
+      <a href="mailto:zaninolautaro@gmail.com" data-placeholder-link>Email</a>
+    </div>
+  </div>
+  <div class="footer__bottom">
+    <span>&copy; <span id="year"></span> Lautaro Zanino. Todos los derechos reservados.</span>
+    <span><a href="https://www.google.com/maps/place/Buenos+Aires,+Argentina" target="_blank" tabindex="-1">Buenos Aires, Argentina</a></span>
+  </div>
+</footer>
+
+<!-- ============ PROJECT DETAIL MODAL ============ -->
+<div class="project-modal" id="projectModal" aria-hidden="true">
+  <div class="project-modal__backdrop" data-close-modal></div>
+  <div class="project-modal__panel" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <button class="project-modal__close" data-close-modal aria-label="Cerrar detalle del proyecto">&times;</button>
+    <div class="project-modal__content" id="projectModalContent"><!-- generado por js/projects.js --></div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+<script src="js/projects.js" defer></script>
+<script src="js/cursor.js" defer></script>
+<script src="js/animations.js" defer></script>
+<script src="js/main.js" defer></script>
+</body>
+</html>

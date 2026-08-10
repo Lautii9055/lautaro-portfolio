@@ -1,0 +1,59 @@
+/* ==========================================================================
+   CUSTOM CURSOR — desktop only, disabled on touch devices & reduced motion
+   ========================================================================== */
+
+(function(){
+  const isTouch = window.matchMedia("(pointer: coarse)").matches;
+  const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if(isTouch || prefersReduced) return;
+
+  const cursor = document.getElementById("cursor");
+  const dot = cursor.querySelector(".cursor__dot");
+  const ring = cursor.querySelector(".cursor__ring");
+  const label = document.getElementById("cursorLabel");
+  if(!cursor) return;
+
+  cursor.style.display = "block";
+
+  let mouseX = 0, mouseY = 0;
+  let ringX = 0, ringY = 0;
+
+  window.addEventListener("mousemove", e => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    dot.style.left = mouseX + "px";
+    dot.style.top = mouseY + "px";
+    label.style.left = mouseX + "px";
+    label.style.top = mouseY + "px";
+  });
+
+  function loop(){
+    ringX += (mouseX - ringX) * 0.18;
+    ringY += (mouseY - ringY) * 0.18;
+    ring.style.left = ringX + "px";
+    ring.style.top = ringY + "px";
+    requestAnimationFrame(loop);
+  }
+  loop();
+
+  const buttons = document.querySelectorAll(".btn, .navbar__cta, .filter-btn, button, a");
+  buttons.forEach(el => {
+    el.addEventListener("mouseenter", () => cursor.classList.add("is-active"));
+    el.addEventListener("mouseleave", () => cursor.classList.remove("is-active"));
+  });
+
+  const projectCards = document.body;
+  projectCards.addEventListener("mouseenter", e => {
+    const card = e.target.closest && e.target.closest(".project-card");
+    if(card){
+      cursor.classList.add("is-label");
+      label.textContent = "VIEW PROJECT";
+    }
+  }, true);
+  projectCards.addEventListener("mouseleave", e => {
+    const card = e.target.closest && e.target.closest(".project-card");
+    if(card){
+      cursor.classList.remove("is-label");
+    }
+  }, true);
+})();

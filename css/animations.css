@@ -1,0 +1,62 @@
+/* ==========================================================================
+   ANIMATIONS
+   ========================================================================== */
+
+.reveal-mask{ overflow: hidden; }
+.reveal-inner{
+  display: inline-block;
+  transform: translateY(110%);
+  will-change: transform;
+}
+
+.reveal-line{
+  opacity: 0;
+  transform: translateY(16px);
+}
+
+.js-ready .hero__eyebrow.reveal-line,
+.js-ready .hero__subtext.reveal-line,
+.js-ready .hero__actions.reveal-line{
+  transition: opacity .8s var(--ease), transform .8s var(--ease);
+}
+
+/* fade-up utility applied via JS/ScrollTrigger */
+.fade-up{
+  opacity: 0;
+  transform: translateY(28px);
+}
+
+/* tech strip marquee */
+.tech-strip__track{
+  animation: marquee 28s linear infinite;
+}
+@keyframes marquee{
+  from{ transform: translateX(0); }
+  to{ transform: translateX(-50%); }
+}
+.tech-strip:hover .tech-strip__track{ animation-play-state: paused; }
+
+/* magnetic buttons handled via JS transform; keep a smooth base transition */
+.magnetic{ will-change: transform; }
+
+/* project card entrance handled by JS/ScrollTrigger via .fade-up */
+
+/* preloader exit */
+.preloader.is-hidden{
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .6s var(--ease);
+}
+
+/* respect reduced motion: strip everything down to simple fades */
+@media (prefers-reduced-motion: reduce){
+  *, *::before, *::after{
+    animation-duration: .001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal-inner{ transform: none !important; }
+  .reveal-line, .fade-up{ opacity: 1 !important; transform: none !important; }
+  .tech-strip__track{ animation: none !important; }
+}
