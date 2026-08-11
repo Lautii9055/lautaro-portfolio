@@ -48,6 +48,20 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
   });
 });
 
+const scrollTopBtn = document.getElementById("scrollTopBtn");
+function updateScrollTopVisibility(){
+  if(!scrollTopBtn) return;
+  scrollTopBtn.classList.toggle("is-visible", window.scrollY > window.innerHeight / 2);
+}
+
+if(scrollTopBtn){
+  scrollTopBtn.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
+  });
+  window.addEventListener("scroll", updateScrollTopVisibility, { passive: true });
+  updateScrollTopVisibility();
+}
+
 /* ---------------- TECH STRIP ---------------- */
 const TECHS = ["HTML", "CSS", "JavaScript", "Java", "Python", "Node.js", "SQL", "MySQL", "SQL Server", "Git", "GitHub"];
 function buildTechGroup(container){

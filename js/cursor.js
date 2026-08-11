@@ -28,32 +28,13 @@
   });
 
   function loop(){
-    ringX += (mouseX - ringX) * 0.18;
-    ringY += (mouseY - ringY) * 0.18;
+    ringX += (mouseX - ringX);
+    ringY += (mouseY - ringY);
     ring.style.left = ringX + "px";
     ring.style.top = ringY + "px";
     requestAnimationFrame(loop);
   }
   loop();
 
-  const buttons = document.querySelectorAll(".btn, .navbar__cta, .filter-btn, button, a");
-  buttons.forEach(el => {
-    el.addEventListener("mouseenter", () => cursor.classList.add("is-active"));
-    el.addEventListener("mouseleave", () => cursor.classList.remove("is-active"));
-  });
-
-  const projectCards = document.body;
-  projectCards.addEventListener("mouseenter", e => {
-    const card = e.target.closest && e.target.closest(".project-card");
-    if(card){
-      cursor.classList.add("is-label");
-      label.textContent = "VIEW PROJECT";
-    }
-  }, true);
-  projectCards.addEventListener("mouseleave", e => {
-    const card = e.target.closest && e.target.closest(".project-card");
-    if(card){
-      cursor.classList.remove("is-label");
-    }
-  }, true);
+  /* Mantener el cursor constante sin cambios al pasar por botones o proyectos */
 })();

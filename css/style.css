@@ -86,7 +86,7 @@ p{ margin: 0; }
 section{ position: relative; }
 
 main > section{
-  padding: clamp(72px, 12vw, 160px) var(--gutter);
+  padding: clamp(48px, 10vw, 120px) var(--gutter);
   max-width: var(--container);
   margin: 0 auto;
 }
@@ -101,7 +101,7 @@ main > section{
   margin: 0 0 16px;
 }
 
-.section-head{ max-width: 640px; margin-bottom: clamp(40px, 6vw, 72px); }
+.section-head{ max-width: 640px; margin-bottom: clamp(16px, 2.5vw, 32px); }
 
 .section-title{
   font-size: clamp(30px, 4.2vw, 48px);
@@ -1022,6 +1022,42 @@ main > section{
   font-family: var(--font-mono);
   font-size: 12px;
   color: var(--text-faint);
+}
+
+.scroll-top{
+  position: fixed;
+  right: clamp(20px, 3vw, 32px);
+  bottom: clamp(20px, 3vw, 32px);
+  z-index: 250;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(16px);
+  transition: opacity .25s ease, transform .25s ease, visibility .25s ease, background .2s ease;
+}
+
+.scroll-top::before{
+  content: "↑";
+}
+
+.scroll-top:hover{
+  background: var(--surface-2);
+}
+
+.scroll-top.is-visible{
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
 }
 
 /* ==========================================================================
