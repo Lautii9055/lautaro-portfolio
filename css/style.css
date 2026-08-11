@@ -1,27 +1,31 @@
 /* ==========================================================================
    LAUTARO ZANINO — PORTFOLIO
-   Design tokens
-   bg #0A0B0F · surface #12141C · surface-2 #171A24
-   text #F2F4F8 · text-muted #8B93A7 · accent #6E5BFF · accent-2 #58E6C9
-   Display: Space Grotesk · Body: Inter · Mono/labels: JetBrains Mono
+   Design tokens — terminal duotone
+   bg #060806 · surface #0E120E · surface-2 #151B15
+   text #F4FBF2 · text-muted #8FA08D · accent (lime) #B6FF3C · accent-2 (ember) #FF5F3C
+   Display/labels: IBM Plex Mono · Body: IBM Plex Sans
    ========================================================================== */
 
 :root{
-  --bg: #0A0B0F;
-  --surface: #12141C;
-  --surface-2: #171A24;
-  --border: #232733;
-  --text: #F2F4F8;
-  --text-muted: #8B93A7;
-  --text-faint: #565D6E;
-  --accent: #6E5BFF;
-  --accent-soft: #6E5BFF1a;
-  --accent-2: #58E6C9;
-  --danger: #FF6B6B;
+  --bg: #060806;
+  --surface: #0E120E;
+  --surface-2: #151B15;
+  --border: #262E26;
+  --text: #F4FBF2;
+  --text-muted: #8FA08D;
+  --text-faint: #4F5C4E;
+  --accent: #B6FF3C;
+  --accent-soft: #B6FF3C1a;
+  --accent-2: #FF5F3C;
+  --danger: #FF5F3C;
 
-  --font-display: 'Space Grotesk', 'Inter', sans-serif;
-  --font-body: 'Inter', sans-serif;
-  --font-mono: 'JetBrains Mono', monospace;
+  --font-display: 'Manrope', sans-serif;
+  --font-body: 'Manrope', sans-serif;
+  --font-mono: 'Manrope', sans-serif;
+
+  --radius-sm: 3px;
+  --radius-md: 6px;
+  --radius-lg: 10px;
 
   --container: 1240px;
   --gutter: clamp(20px, 5vw, 64px);
@@ -94,11 +98,38 @@ main > section{
 /* ---------- shared type/section patterns ---------- */
 
 .eyebrow{
-  font-family: var(--font-mono);
-  font-size: 12px;
-  letter-spacing: .08em;
-  color: var(--accent-2);
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
   margin: 0 0 16px;
+}
+.eyebrow__num{
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(30px, 3.4vw, 40px);
+  line-height: 1;
+  color: transparent;
+  -webkit-text-stroke: 1.4px var(--border);
+}
+.eyebrow__label{
+  position: relative;
+  padding-left: 18px;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.eyebrow__label::before{
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 11px;
+  height: 2px;
+  background: var(--accent);
 }
 
 .section-head{ max-width: 640px; margin-bottom: clamp(16px, 2.5vw, 32px); }
@@ -121,7 +152,7 @@ main > section{
   justify-content: center;
   gap: 8px;
   padding: 15px 28px;
-  border-radius: 100px;
+  border-radius: var(--radius-md);
   font-family: var(--font-mono);
   font-size: 13px;
   letter-spacing: .03em;
@@ -232,7 +263,7 @@ main > section{
   color: #fff;
   background: var(--accent);
   padding: 5px 10px;
-  border-radius: 100px;
+  border-radius: var(--radius-md);
   opacity: 0;
   white-space: nowrap;
   pointer-events: none;
@@ -321,7 +352,7 @@ main > section{
   text-transform: uppercase;
   border: 1px solid var(--border);
   padding: 10px 20px;
-  border-radius: 100px;
+  border-radius: var(--radius-md);
   transition: border-color .25s ease, color .25s ease, background .25s ease;
 }
 .navbar__cta:hover{ border-color: var(--accent); background: var(--accent-soft); color: var(--accent-2); }
@@ -386,7 +417,7 @@ main > section{
   background: var(--accent);
   color: #fff;
   padding: 16px 26px;
-  border-radius: 100px;
+  border-radius: var(--radius-md);
   font-family: var(--font-mono);
   font-size: 13px;
   text-transform: uppercase;
@@ -413,22 +444,34 @@ main > section{
   max-width: none;
   overflow: hidden;
 }
-.hero__canvas{
+.hero__glow{
   position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  opacity: .8;
-}
-.hero__grid-overlay{
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(to right, rgba(242,244,248,.035) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(242,244,248,.035) 1px, transparent 1px);
-  background-size: 64px 64px;
-  mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, #000 40%, transparent 90%);
+  width: 620px;
+  height: 620px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--accent-soft) 0%, transparent 70%);
+  filter: blur(40px);
+  top: 0;
+  left: 0;
+  transform: translate(calc(50vw - 310px), 40vh);
   pointer-events: none;
+  opacity: .8;
+  transition: transform .6s cubic-bezier(.22,1,.36,1);
+  will-change: transform;
+}
+.hero__ghost-index{
+  position: absolute;
+  right: clamp(-10px, 2vw, 40px);
+  top: clamp(60px, 12vh, 140px);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(180px, 26vw, 380px);
+  line-height: 1;
+  color: transparent;
+  -webkit-text-stroke: 1px var(--border);
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
 }
 .hero__content{
   position: relative;
@@ -439,9 +482,12 @@ main > section{
 }
 .hero__eyebrow{
   font-family: var(--font-mono);
+  font-weight: 600;
   font-size: 13px;
-  color: var(--accent-2);
+  color: var(--accent);
   margin: 0 0 28px;
+  text-transform: uppercase;
+  letter-spacing: .12em;
 }
 .hero__name{
   font-size: clamp(52px, 10vw, 118px);
@@ -449,6 +495,11 @@ main > section{
   letter-spacing: -0.03em;
   margin: 0 0 28px;
   display: block;
+}
+.hero__name em{
+  font-style: italic;
+  font-weight: 500;
+  color: var(--accent);
 }
 .hero__name .reveal-mask{ display: block; overflow: hidden; }
 .hero__headline{
@@ -512,6 +563,7 @@ main > section{
   font-family: var(--font-mono);
   font-size: 11px;
   letter-spacing: .12em;
+  text-transform: uppercase;
   color: var(--text-faint);
   margin: 0 0 18px;
 }
@@ -521,18 +573,23 @@ main > section{
 }
 .tech-strip__group{
   display: flex;
-  gap: 56px;
-  padding-right: 56px;
+  gap: 14px;
+  padding-right: 14px;
   align-items: center;
 }
 .tech-strip__group span{
-  font-family: var(--font-mono);
-  font-size: 18px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 14px;
   color: var(--text-muted);
   white-space: nowrap;
-  transition: color .25s ease;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 9px 18px;
+  border-radius: var(--radius-md);
+  transition: color .25s ease, border-color .25s ease, background .25s ease;
 }
-.tech-strip__group span:hover{ color: var(--accent-2); }
+.tech-strip__group span:hover{ color: var(--bg); background: var(--accent); border-color: var(--accent); }
 
 /* ==========================================================================
    ABOUT
@@ -565,12 +622,12 @@ main > section{
   color: var(--accent-2);
   border: 1px solid var(--border);
   padding: 8px 14px;
-  border-radius: 100px;
+  border-radius: var(--radius-md);
 }
 .about__panel{
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 16px;
+  border-radius: 8px;
   padding: 28px;
   font-family: var(--font-mono);
   font-size: 13px;
@@ -607,7 +664,7 @@ main > section{
   gap: 1px;
   background: var(--border);
   border: 1px solid var(--border);
-  border-radius: 20px;
+  border-radius: 10px;
   overflow: hidden;
 }
 .service-card{
@@ -686,7 +743,7 @@ main > section{
   color: var(--text-muted);
   border: 1px solid var(--border);
   padding: 9px 18px;
-  border-radius: 100px;
+  border-radius: var(--radius-md);
   transition: all .25s ease;
 }
 .filter-btn:hover{ color: var(--text); border-color: var(--text-muted); }
@@ -703,7 +760,7 @@ main > section{
 .project-card{
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 18px;
+  border-radius: 8px;
   overflow: hidden;
   cursor: pointer;
   transition: transform .4s var(--ease), border-color .3s ease;
@@ -716,7 +773,7 @@ main > section{
   position: relative;
   aspect-ratio: 16/10;
   background:
-    radial-gradient(circle at 30% 20%, rgba(110,91,255,.35), transparent 55%),
+    radial-gradient(circle at 30% 20%, rgba(182,255,60,.22), transparent 55%),
     var(--surface-2);
   overflow: hidden;
 }
@@ -770,7 +827,7 @@ main > section{
   color: var(--text-faint);
   border: 1px solid var(--border);
   padding: 4px 9px;
-  border-radius: 100px;
+  border-radius: var(--radius-md);
 }
 
 /* ==========================================================================
@@ -783,41 +840,66 @@ main > section{
   align-items: center;
 }
 .featured__mockup{
+  position: relative;
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 16px;
+  border-radius: 10px;
+  aspect-ratio: 4/3.4;
   overflow: hidden;
+  padding: 32px;
 }
-.featured__mockup-bar{
-  display: flex;
-  gap: 6px;
-  padding: 14px 16px;
-  border-bottom: 1px solid var(--border);
+.featured__mockup-tag{
+  position: relative;
+  z-index: 2;
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 11px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+  padding: 7px 14px;
+  border-radius: var(--radius-md);
 }
-.featured__mockup-bar span{
-  width: 9px; height: 9px;
-  border-radius: 50%;
-  background: var(--border);
-}
-.featured__mockup-screen{ padding: 28px; }
-.featured__mockup-row{
-  height: 12px;
-  border-radius: 4px;
-  background: var(--surface-2);
-  margin-bottom: 12px;
-}
-.w-60{ width: 60%; } .w-90{ width: 90%; } .w-40{ width: 40%; background: var(--accent-soft); }
-.featured__mockup-grid{
-  display: grid;
-  grid-template-columns: repeat(3,1fr);
-  gap: 10px;
-  margin-top: 22px;
-}
-.featured__mockup-grid div{
-  aspect-ratio: 1;
-  border-radius: 8px;
+.featured__mockup-shapes{ position: absolute; inset: 0; }
+.featured__mockup-block{
+  position: absolute;
+  border-radius: 12px;
   background: var(--surface-2);
   border: 1px solid var(--border);
+}
+.featured__mockup-block:nth-child(2){
+  width: 56%; height: 46%;
+  right: 8%; bottom: 12%;
+}
+.featured__mockup-block--accent{
+  width: 34%; height: 30%;
+  left: 10%; bottom: 18%;
+  background: var(--accent-soft);
+  border-color: var(--accent);
+}
+.featured__mockup-line{
+  position: absolute;
+  height: 2px;
+  background: var(--border);
+  right: 12%;
+  top: 34%;
+  width: 40%;
+}
+.featured__mockup-line--short{
+  top: 44%;
+  width: 24%;
+  background: var(--accent);
+}
+.featured__mockup-ring{
+  position: absolute;
+  width: 130px;
+  height: 130px;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  top: -30px;
+  right: -30px;
 }
 .featured__title{ font-size: clamp(24px, 3vw, 32px); margin-bottom: 14px; }
 .featured__desc{ color: var(--text-muted); margin-bottom: 28px; }
@@ -845,7 +927,7 @@ main > section{
 .stack__category{
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 16px;
+  border-radius: 8px;
   padding: 26px;
 }
 .stack__category h3{
@@ -888,6 +970,7 @@ main > section{
   font-family: var(--font-mono);
   font-size: 11px;
   letter-spacing: .12em;
+  text-transform: uppercase;
   color: var(--text-faint);
   margin-bottom: 20px;
 }
@@ -903,7 +986,7 @@ main > section{
   color: var(--text-muted);
   border: 1px solid var(--border);
   padding: 10px 18px;
-  border-radius: 100px;
+  border-radius: var(--radius-md);
 }
 
 /* ==========================================================================
@@ -934,7 +1017,7 @@ main > section{
 .contact__form{
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 20px;
+  border-radius: 10px;
   padding: clamp(24px, 4vw, 40px);
   display: flex;
   flex-direction: column;
@@ -1086,7 +1169,7 @@ main > section{
   position: relative;
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 20px;
+  border-radius: 10px;
   max-width: 720px;
   width: 100%;
   max-height: 85vh;
@@ -1128,7 +1211,27 @@ main > section{
   font-size: 12px;
   border: 1px solid var(--border);
   padding: 6px 12px;
-  border-radius: 100px;
+  border-radius: var(--radius-md);
   color: var(--text-faint);
 }
 .project-modal__content .modal-actions{ display: flex; gap: 14px; flex-wrap: wrap; }
+
+/* --------------------------------------------------------------------------
+  Minimal override: neutralize only the violet button hover and hover movement
+  - Disable `.btn--primary` violet background on hover
+  - Prevent `.project-card` from translating on hover
+  -------------------------------------------------------------------------*/
+.btn--primary:hover{ background: var(--accent); }
+.project-card:hover{ transform: none; border-color: var(--border); }
+
+/* --------------------------------------------------------------------------
+  Disable movement for buttons/links that use CSS or JS transforms (magnetic)
+  Keeps buttons in place while preserving color/border transitions.
+  -------------------------------------------------------------------------*/
+.btn, a.btn, button.btn, .magnetic{
+  transform: none !important;
+  transition-property: background, border-color, color !important;
+}
+.btn:hover, a.btn:hover, button.btn:hover, .magnetic:hover{
+  transform: none !important;
+}

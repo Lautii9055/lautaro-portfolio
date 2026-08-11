@@ -127,93 +127,17 @@ window.addEventListener("load", () => {
   });
 })();
 
-/* ---------------- HERO CANVAS — node network ---------------- */
-(function heroCanvas(){
-  const canvas = document.getElementById("heroCanvas");
-  if(!canvas) return;
-  const ctx = canvas.getContext("2d");
-  let w, h, points, mouse = { x: null, y: null };
-  const isSmall = window.matchMedia("(max-width: 768px)").matches;
-  const density = isSmall ? 60 : 46;
+/* ---------------- HERO GLOW — soft cursor-follow light ---------------- */
+(function heroGlow(){
+  const glow = document.getElementById("heroGlow");
+  const hero = document.querySelector(".hero");
+  if(!glow || !hero) return;
+  if(prefersReduced || window.matchMedia("(pointer: coarse)").matches) return;
 
-  function resize(){
-    w = canvas.width = canvas.offsetWidth * devicePixelRatio;
-    h = canvas.height = canvas.offsetHeight * devicePixelRatio;
-    canvas.style.width = canvas.offsetWidth + "px";
-    canvas.style.height = canvas.offsetHeight + "px";
-  }
-
-  function init(){
-    resize();
-    const count = Math.floor((canvas.offsetWidth * canvas.offsetHeight) / (density * 1000));
-    points = Array.from({ length: Math.min(count, 90) }, () => ({
-      x: Math.random() * canvas.offsetWidth,
-      y: Math.random() * canvas.offsetHeight,
-      vx: (Math.random() - 0.5) * 0.25,
-      vy: (Math.random() - 0.5) * 0.25
-    }));
-  }
-
-  function draw(){
-    ctx.setTransform(devicePixelRatio, 0, 0, devicePixelRatio, 0, 0);
-    ctx.clearRect(0, 0, canvas.offsetWidth, canvas.offsetHeight);
-
-    const accent = "110,91,255";
-    const accent2 = "88,230,201";
-
-    points.forEach(p => {
-      p.x += p.vx; p.y += p.vy;
-      if(p.x < 0 || p.x > canvas.offsetWidth) p.vx *= -1;
-      if(p.y < 0 || p.y > canvas.offsetHeight) p.vy *= -1;
-
-      if(mouse.x !== null){
-        const dx = p.x - mouse.x, dy = p.y - mouse.y;
-        const dist = Math.sqrt(dx*dx + dy*dy);
-        if(dist < 140){
-          p.x += dx / dist * 0.6;
-          p.y += dy / dist * 0.6;
-        }
-      }
-    });
-
-    for(let i = 0; i < points.length; i++){
-      for(let j = i + 1; j < points.length; j++){
-        const dx = points[i].x - points[j].x;
-        const dy = points[i].y - points[j].y;
-        const dist = Math.sqrt(dx*dx + dy*dy);
-        if(dist < 140){
-          ctx.strokeStyle = `rgba(${accent}, ${0.14 * (1 - dist/140)})`;
-          ctx.lineWidth = 1;
-          ctx.beginPath();
-          ctx.moveTo(points[i].x, points[i].y);
-          ctx.lineTo(points[j].x, points[j].y);
-          ctx.stroke();
-        }
-      }
-    }
-
-    points.forEach((p, i) => {
-      ctx.fillStyle = i % 5 === 0 ? `rgba(${accent2}, .8)` : `rgba(${accent}, .6)`;
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, i % 5 === 0 ? 2 : 1.4, 0, Math.PI * 2);
-      ctx.fill();
-    });
-
-    if(!prefersReduced) requestAnimationFrame(draw);
-  }
-
-  window.addEventListener("resize", init);
-  canvas.parentElement.addEventListener("mousemove", e => {
-    const r = canvas.getBoundingClientRect();
-    mouse.x = e.clientX - r.left;
-    mouse.y = e.clientY - r.top;
+  hero.addEventListener("mousemove", e => {
+    const r = hero.getBoundingClientRect();
+    const x = e.clientX - r.left;
+    const y = e.clientY - r.top;
+    glow.style.transform = `translate(${x - 310}px, ${y - 310}px)`;
   });
-  canvas.parentElement.addEventListener("mouseleave", () => { mouse.x = null; mouse.y = null; });
-
-  init();
-  if(prefersReduced){
-    draw();
-  } else {
-    requestAnimationFrame(draw);
-  }
 })();
