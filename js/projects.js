@@ -7,7 +7,7 @@
 const PROJECTS = [
   {
     id: "bank-management-system",
-    name: "Bank Management System",
+    name: "Sistema de gestión bancaria",
     category: "backend",
     categoryLabel: "Backend · Full Stack",
     summary: "Gestión de clientes, préstamos, pagos y transacciones financieras.",
@@ -18,9 +18,9 @@ const PROJECTS = [
   },
   {
     id: "inventory-control",
-    name: "Sistema de Control de Inventario",
+    name: "Sistema de control de inventario",
     category: "database",
-    categoryLabel: "Database",
+    categoryLabel: "Base de datos",
     summary: "Control de stock, movimientos y reportes en tiempo real.",
     description: "Sistema para registrar productos, controlar stock, movimientos de entrada/salida y generar reportes de inventario con consultas optimizadas.",
     tech: ["Python", "PostgreSQL", "SQL"],
@@ -29,9 +29,9 @@ const PROJECTS = [
   },
   {
     id: "business-landing",
-    name: "Landing Page — Negocio Local",
+    name: "Página de aterrizaje — negocio local",
     category: "website",
-    categoryLabel: "Website",
+    categoryLabel: "Sitio web",
     summary: "Landing enfocada en conversión para un negocio local.",
     description: "Landing page responsive orientada a captar clientes: propuesta de valor clara, formulario de contacto y optimización para buscadores.",
     tech: ["HTML5", "CSS3", "JavaScript"],
@@ -40,9 +40,9 @@ const PROJECTS = [
   },
   {
     id: "task-manager-app",
-    name: "Task Manager Web App",
+    name: "Aplicación de gestión de tareas",
     category: "webapp",
-    categoryLabel: "Web App",
+    categoryLabel: "Aplicación web",
     summary: "Gestión de tareas y proyectos con usuarios y permisos.",
     description: "Aplicación para crear y organizar tareas por proyecto, con autenticación de usuarios, estados y notificaciones internas.",
     tech: ["Node.js", "Express", "MySQL", "JavaScript"],
@@ -51,7 +51,7 @@ const PROJECTS = [
   },
   {
     id: "booking-system",
-    name: "Sistema de Reservas",
+    name: "Sistema de reservas",
     category: "fullstack",
     categoryLabel: "Full Stack",
     summary: "Reservas online con calendario y disponibilidad en tiempo real.",
@@ -62,9 +62,9 @@ const PROJECTS = [
   },
   {
     id: "portfolio-template",
-    name: "Portfolio Template",
+    name: "Plantilla de portafolio",
     category: "website",
-    categoryLabel: "Website",
+    categoryLabel: "Sitio web",
     summary: "Sitio personal minimalista, rápido y accesible.",
     description: "Plantilla de portfolio personal enfocada en performance, accesibilidad y una experiencia de usuario clara sin dependencias pesadas.",
     tech: ["HTML5", "CSS3", "JavaScript"],
@@ -86,7 +86,7 @@ function renderProjects(filter = "all"){
     <article class="project-card fade-up" data-id="${p.id}" tabindex="0" role="button" aria-label="Ver detalle de ${p.name}">
       <div class="project-card__media">
         <span class="project-card__media-glyph">[ ${p.categoryLabel.toUpperCase()} ]</span>
-        <div class="project-card__overlay">View Project</div>
+        <div class="project-card__overlay">Ver proyecto</div>
       </div>
       <div class="project-card__body">
         <span class="project-card__cat">${p.categoryLabel}</span>
@@ -123,7 +123,7 @@ function openModal(id){
     <p>${p.description}</p>
     <div class="modal-tech">${p.tech.map(t => `<span>${t}</span>`).join("")}</div>
     <div class="modal-actions">
-      <a href="${p.demo}" class="btn btn--primary magnetic" data-placeholder-link>Live Demo</a>
+      <a href="${p.demo}" class="btn btn--primary magnetic" data-placeholder-link>Demo en vivo</a>
       <a href="${p.github}" class="btn btn--ghost magnetic" data-placeholder-link>GitHub</a>
     </div>
   `;

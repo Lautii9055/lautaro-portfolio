@@ -17,7 +17,6 @@
   --accent: #B6FF3C;
   --accent-soft: #B6FF3C1a;
   --accent-2: #FF5F3C;
-  --danger: #FF5F3C;
 
   --font-display: 'Manrope', sans-serif;
   --font-body: 'Manrope', sans-serif;
@@ -1052,7 +1051,7 @@ main > section{
 .form-error{
   font-family: var(--font-mono);
   font-size: 11px;
-  color: var(--danger);
+  color: var(--accent-2);
   min-height: 14px;
 }
 .contact__form-note{
@@ -1135,6 +1134,7 @@ main > section{
 
 .scroll-top:hover{
   background: var(--surface-2);
+  border-color: var(--accent-2);
 }
 
 .scroll-top.is-visible{
